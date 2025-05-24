@@ -27,12 +27,11 @@ Esto entrenará un modelo y lo desplegará en SageMaker.
 aws s3 mb s3://image-classification-input
 aws s3 mb s3://image-classification-results
 ```
-3. Crear la función Lambda
-    \cdot Usa lambda/lambda_function.py
+## 3. Crear la función Lambda
 
-    \cdot Asocia un trigger S3 (al bucket image-classification-input)
-
-    \cdot Asigna permisos para usar SageMaker
+- Usa lambda/lambda_function.py
+- Asocia un trigger S3 (al bucket image-classification-input)
+- Asigna permisos para usar SageMaker
 
 ## 4. Usar scripts en EC2
 ```bash
