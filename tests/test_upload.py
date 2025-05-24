@@ -1,4 +1,4 @@
-from moto import mock_s3
+from moto.s3 import mock_s3
 import boto3
 import tempfile
 import os
