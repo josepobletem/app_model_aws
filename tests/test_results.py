@@ -4,11 +4,11 @@ import pytest
 
 @mock_s3
 def test_get_results_script_import():
-    bucket_name = "my-test-bucket"
+    bucket_name = "image-classification-results"  # Debe coincidir con el script
     s3 = boto3.client("s3", region_name="us-east-1")
     s3.create_bucket(Bucket=bucket_name)
 
     s3.put_object(Bucket=bucket_name, Key="test.txt", Body=b"hello")
 
-    # Simula la importación del script (después de crear recursos)
+    # Esto ya no lanzará error si el script está corregido
     import ec2.get_results

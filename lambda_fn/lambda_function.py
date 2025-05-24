@@ -28,4 +28,4 @@ def lambda_handler(event, context):
         Body=json.dumps({'prediction': prediction})
     )
 
-    return {"statusCode": 200, "body": json.dumps("Predicción almacenada.")}
+    return {"statusCode": 200, "body": json.dumps({"predicted_label": prediction})}
