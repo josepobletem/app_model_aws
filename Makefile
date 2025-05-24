@@ -23,7 +23,7 @@ export PYTHONPATH := $(shell pwd)
 	$(PIP) install -r docker/requirements.txt
 
 install: .venv
-	$(PIP) install -r requirements.txt
+	$(PIP) install -r docker/requirements.txt
 
 test:
 	$(PYTEST) tests/
