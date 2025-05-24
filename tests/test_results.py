@@ -1,4 +1,4 @@
-from moto import mock_aws
+from moto import mock_s3
 import boto3
 import pytest
 
