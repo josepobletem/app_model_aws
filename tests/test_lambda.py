@@ -1,4 +1,4 @@
-import lambda.lambda_function as lf
+import lambda_fn.lambda_function as lf
 
 def test_lambda_handler_format():
     # Fake event with minimal valid structure
