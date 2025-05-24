@@ -40,6 +40,6 @@ python ec2/get_results.py
 ```
 ### Requisitos
 
-   \cdot AWS CLI configurado
-   \cdot Python 3.8+
-   \cdot SageMaker y Lambda con permisos adecuados
+- AWS CLI configurado
+- Python 3.8+
+- SageMaker y Lambda con permisos adecuados
