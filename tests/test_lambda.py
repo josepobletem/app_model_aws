@@ -23,3 +23,4 @@ def test_lambda_handler_mock_sagemaker(mock_boto_client):
     response = lf.lambda_handler(event, None)
 
     assert "predicted_label" in response
+    assert response["predicted_label"] == "cat"
