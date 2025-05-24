@@ -19,3 +19,28 @@ Este proyecto implementa un sistema de clasificación de imágenes utilizando se
 ```bash
 cd sagemaker
 python deploy.py
+
+Esto entrenará un modelo y lo desplegará en SageMaker.
+
+## 2. Crear buckets en S3
+```bash
+aws s3 mb s3://image-classification-input
+aws s3 mb s3://image-classification-results
+
+3. Crear la función Lambda
+    \Bat Usa lambda/lambda_function.py
+
+    \Bat Asocia un trigger S3 (al bucket image-classification-input)
+
+    \Bat Asigna permisos para usar SageMaker
+
+## 4. Usar scripts en EC2
+```bash
+python ec2/upload_images.py ruta/a/imagen.jpg
+python ec2/get_results.py
+
+### Requisitos
+
+   \Bat AWS CLI configurado
+   \Bat Python 3.8+
+   \Bat SageMaker y Lambda con permisos adecuados
