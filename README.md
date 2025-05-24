@@ -43,3 +43,57 @@ python ec2/get_results.py
 - AWS CLI configurado
 - Python 3.8+
 - SageMaker y Lambda con permisos adecuados
+
+## Estructura del proyecto con Docker
+```python
+image-classifier/
+│
+├── docker/
+│   ├── Dockerfile.train              # Docker para entrenamiento local
+│   ├── Dockerfile.lambda             # (opcional) Docker para Lambda
+│   ├── run_train.sh                  # Script de ejecución local
+│   └── requirements.txt              # Dependencias para entrenamiento
+│
+├── lambda/
+│   └── lambda_function.py
+│
+├── sagemaker/
+│   ├── train.py
+│   └── deploy.py
+│
+├── ec2/
+│   ├── upload_images.py
+│   └── get_results.py
+│
+├── README.md
+└── .gitignore
+```
+
+### 1. docker/Dockerfile.train
+
+```Dockerfile
+### 1. docker/Dockerfile.train
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY docker/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY sagemaker/train.py .
+
+CMD ["python", "train.py"]
+```
+### 2. docker/requirements.txt
+
+```bash
+scikit-learn
+joblib
+```
+### 3. docker/run_train.sh
+
+```bash
+#!/bin/bash
+docker build -f docker/Dockerfile.train -t image-classifier-train .
+docker run --rm -v $(pwd)/output:/app/output image-classifier-train
+```
