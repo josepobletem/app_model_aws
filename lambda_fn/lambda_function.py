@@ -1,5 +1,9 @@
+import os
 import boto3
 import json
+
+os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'  # o la región que uses
+sagemaker = boto3.client('sagemaker-runtime')
 
 sagemaker = boto3.client('sagemaker-runtime')
 s3 = boto3.client('s3')
