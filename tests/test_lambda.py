@@ -1,3 +1,4 @@
+import json
 from unittest.mock import patch, MagicMock
 
 @patch("boto3.client")
@@ -22,5 +23,5 @@ def test_lambda_handler_mock_sagemaker(mock_boto_client):
     }
     response = lf.lambda_handler(event, None)
 
-    assert "predicted_label" in response
-    #assert response["predicted_label"] == "cat"
+    assert "predicted_label" in json.loads(response["body"])
+    assert response["predicted_label"] == "cat"
