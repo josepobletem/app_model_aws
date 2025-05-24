@@ -15,7 +15,7 @@ def test_upload_image_script_import():
         filename = tmp.name
 
     # Crear clave válida
-    key = os.path.basename(filename)
+    key = os.path.basename(filename) or "dummy.jpg"
 
     # Este código simula lo que haría upload_images.py
     s3.upload_file(filename, bucket_name, key)

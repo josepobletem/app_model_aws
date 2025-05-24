@@ -10,7 +10,16 @@ def test_lambda_handler_mock_sagemaker(mock_boto_client):
 
     import lambda_fn.lambda_function as lf
 
-    event = {"image_data": "base64encodedimage"}
+    event = {
+    "Records": [
+        {
+            "s3": {
+                "bucket": {"name": "my-bucket"},
+                "object": {"key": "image.png"}
+            }
+        }
+    ]
+    }
     response = lf.lambda_handler(event, None)
 
     assert "predicted_label" in response
