@@ -5,4 +5,4 @@ joblib
 pillow
 pytest
 pylint
-moto>=5.0
+moto<5.0.0
