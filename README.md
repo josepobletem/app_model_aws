@@ -28,11 +28,11 @@ aws s3 mb s3://image-classification-input
 aws s3 mb s3://image-classification-results
 ```
 3. Crear la función Lambda
-    \Bat Usa lambda/lambda_function.py
+    \cdot Usa lambda/lambda_function.py
 
-    \Bat Asocia un trigger S3 (al bucket image-classification-input)
+    \cdot Asocia un trigger S3 (al bucket image-classification-input)
 
-    \Bat Asigna permisos para usar SageMaker
+    \cdot Asigna permisos para usar SageMaker
 
 ## 4. Usar scripts en EC2
 ```bash
@@ -41,6 +41,6 @@ python ec2/get_results.py
 ```
 ### Requisitos
 
-   \Bat AWS CLI configurado
-   \Bat Python 3.8+
-   \Bat SageMaker y Lambda con permisos adecuados
+   \cdot AWS CLI configurado
+   \cdot Python 3.8+
+   \cdot SageMaker y Lambda con permisos adecuados
