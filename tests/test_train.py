@@ -1,4 +1,4 @@
-from sagemaker.train import model_fn
+from Trainer.train import model_fn
 import os
 
 def test_model_loading():

@@ -1,11 +1,21 @@
-install:
-	pip install -r docker/requirements.txt
-	pip install pytest boto3 pylint
+PYTHON = .venv/bin/python
+PIP = .venv/bin/pip
+PYLINT = .venv/bin/pylint
+PYTEST = .venv/bin/pytest
+
+export PYTHONPATH := $(shell pwd)
+
+.venv:
+	python3 -m venv .venv
+	$(PIP) install --upgrade pip
+
+install: .venv
+	$(PIP) install -r requirements.txt
 
 test:
-	pytest
+	$(PYTEST) tests/
 
 lint:
-	pylint lambda/*.py sagemaker/*.py ec2/*.py
+	$(PYLINT) ec2/*.py lambda_fn/*.py trainer/*.py
 
 ci: install test lint
