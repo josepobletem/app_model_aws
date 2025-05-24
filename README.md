@@ -61,3 +61,56 @@ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d
 - AWS CLI configurado
 - Python 3.8+
 - Docker
+
+
+## CI/CD con GitHub Actions
+
+Este repositorio incluye una pipeline de GitHub Actions para ejecutar pruebas automáticas con `pytest`.
+
+### Estructura
+
+- `.github/workflows/ci.yml`: configura la integración continua
+- `tests/`: pruebas unitarias de cada módulo (Lambda, entrenamiento, EC2)
+
+### Cómo funciona
+
+Cada push o pull request a la rama `main` dispara:
+
+1. Instalación de dependencias
+2. Ejecución de pruebas con `pytest`
+
+### Ejecutar pruebas localmente
+
+```bash
+pip install -r docker/requirements.txt
+pip install pytest boto3
+pytest
+```
+
+
+## Análisis de calidad con Pylint
+
+Este proyecto incluye verificación de estilo y calidad de código con `pylint`.
+
+### Ejecutar localmente
+
+```bash
+pip install pylint
+pylint lambda/*.py sagemaker/*.py ec2/*.py
+```
+
+### Integración continua
+
+GitHub Actions también ejecuta `pylint` automáticamente en cada push o PR.
+
+
+## Makefile
+
+Puedes usar `make` para facilitar comandos comunes:
+
+```bash
+make install   # Instala dependencias
+make test      # Ejecuta pruebas con pytest
+make lint      # Ejecuta pylint
+make ci        # Ejecuta pruebas y lint (lo que usa GitHub Actions)
+```
