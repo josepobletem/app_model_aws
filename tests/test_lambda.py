@@ -24,5 +24,5 @@ def test_lambda_handler_mock_sagemaker(mock_boto_client):
     response = lf.lambda_handler(event, None)
 
     body = json.loads(response["body"])
-    assert "predicted_label" in body)
+    assert "predicted_label" in body
     assert body["predicted_label"] == "cat"
