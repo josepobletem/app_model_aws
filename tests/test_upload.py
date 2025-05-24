@@ -1,4 +1,4 @@
-from moto.s3 import mock_s3
+from moto import mock_aws
 import boto3
 import tempfile
 import os
