@@ -8,4 +8,4 @@ def test_model_loading(tmp_path):
 
     from trainer.train import model_fn
     model = model_fn(tmp_path)
-    #assert "modelo" in model
+    assert "modelo" in model
