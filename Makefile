@@ -7,15 +7,18 @@ export PYTHONPATH := $(shell pwd)
 
 .venv:
 	python3 -m venv .venv
-	$(PIP) install --upgrade pip
+	$(PIP) install -r docker/requirements.txt
+	$(PIP) install pytest boto3 pylint
 
 install: .venv
-	$(PIP) install -r requirements.txt
 
 test:
-	$(PYTEST) tests/
+	PYTHONPATH=. $(PYTEST)
 
 lint:
-	$(PYLINT) ec2/*.py lambda_fn/*.py trainer/*.py
+	$(PYLINT) ec2/*.py lambda_fn/*.py trainer/*.py tests/*.py
 
-ci: install test lint
+train:
+	$(PYTHON) trainer/train.py
+
+ci: install test lint train

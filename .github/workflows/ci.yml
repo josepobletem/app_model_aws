@@ -22,3 +22,6 @@ jobs:
     - name: Run tests and lint with Makefile
       run: |
         make ci
+env:
+  AWS_DEFAULT_REGION: us-east-1
+
