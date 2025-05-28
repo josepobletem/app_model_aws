@@ -1,5 +1,6 @@
 import json
 from unittest.mock import patch, MagicMock
+import lambda_fn.lambda_function as lf
 
 @patch("boto3.client")
 def test_lambda_handler_mock_sagemaker(mock_boto_client):
@@ -8,8 +9,6 @@ def test_lambda_handler_mock_sagemaker(mock_boto_client):
         "Body": MagicMock(read=lambda: b'{"predicted_label": "cat"}')
     }
     mock_boto_client.return_value = mock_runtime
-
-    import lambda_fn.lambda_function as lf
 
     event = {
     "Records": [

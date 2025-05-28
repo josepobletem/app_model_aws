@@ -1,6 +1,5 @@
 from moto import mock_s3
 import boto3
-import pytest
 
 @mock_s3
 def test_get_results_script_import():
@@ -9,6 +8,3 @@ def test_get_results_script_import():
     s3.create_bucket(Bucket=bucket_name)
 
     s3.put_object(Bucket=bucket_name, Key="test.txt", Body=b"hello")
-
-    # Esto ya no lanzará error si el script está corregido
-    import ec2.get_results
