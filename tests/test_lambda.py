@@ -2,7 +2,7 @@
 import lambda_fn.lambda_function as lf
 from unittest.mock import patch, MagicMock
 
-@patch("boto3.client")
+@patch("lambda_fn.lambda_function.boto3.client")
 def test_lambda_handler_mock_sagemaker(mock_boto_client):
     # Simulación del cliente de S3
     mock_s3 = MagicMock()
