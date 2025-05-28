@@ -1,17 +1,16 @@
-# estándar
+# lambda_fn/lambda_function.py
+
 import json
 import os
-
-# terceros
 import boto3
 
 os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'  # o la región que uses
-sagemaker = boto3.client('sagemaker-runtime')
-
-sagemaker = boto3.client('sagemaker-runtime')
-s3 = boto3.client('s3')
 
 def lambda_handler(event, _context):
+    # Crear los clientes dentro de la función para que puedan ser "mockeados"
+    s3 = boto3.client('s3')
+    sagemaker = boto3.client('sagemaker-runtime')
+
     bucket = event['Records'][0]['s3']['bucket']['name']
     key = event['Records'][0]['s3']['object']['key']
 
@@ -31,4 +30,4 @@ def lambda_handler(event, _context):
         Body=json.dumps({'prediction': prediction})
     )
 
-    return {"statusCode": 200, "body":  prediction}
+    return {"statusCode": 200, "body": prediction}

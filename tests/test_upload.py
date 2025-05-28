@@ -1,7 +1,11 @@
-from moto import mock_s3
-import boto3
-import tempfile
+# pylint: disable=unused-import, import-outside-toplevel
+
 import os
+import tempfile
+
+import boto3
+from moto import mock_s3
+
 
 @mock_s3
 def test_upload_image_script_import():
@@ -17,10 +21,10 @@ def test_upload_image_script_import():
     # Crear clave válida
     key = os.path.basename(filename) or "dummy.jpg"
 
-    # Este código simula lo que haría upload_images.py
+    # Simular lo que haría el script real
     s3.upload_file(filename, bucket_name, key)
 
-    # Importa tu script después del setup
-    import ec2.upload_images
+    # Forzar la importación para asegurar que no falla
+    import ec2.upload_images  # noqa: F401
 
     os.remove(filename)  # limpiar
