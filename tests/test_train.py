@@ -1,6 +1,7 @@
+# pylint: disable=wrong-import-position
+
 import os
 import sys
-
 import joblib
 
 # Agregar la ruta del proyecto para que funcione el import relativo
