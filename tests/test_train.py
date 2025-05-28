@@ -1,11 +1,13 @@
 import os
 import sys
+
 import joblib
 
 # Agregar la ruta del proyecto para que funcione el import relativo
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from trainer.train import model_fn
+
 
 def test_model_loading(tmp_path):
     # Crear modelo de prueba

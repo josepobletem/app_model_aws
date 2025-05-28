@@ -1,3 +1,5 @@
+# pylint: disable=unused-import, import-outside-toplevel
+
 import os
 import tempfile
 
@@ -22,8 +24,7 @@ def test_upload_image_script_import():
     # Simular lo que haría el script real
     s3.upload_file(filename, bucket_name, key)
 
-    # ⚠️ Importar tu script después del setup, pero solo si se necesita ejecutar algo en import
-    # Elimínalo si no ejecuta nada al importar
+    # Forzar la importación para asegurar que no falla
     import ec2.upload_images  # noqa: F401
 
     os.remove(filename)  # limpiar
