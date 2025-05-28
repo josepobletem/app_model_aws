@@ -8,8 +8,12 @@ def model_fn(model_dir):
 
 if __name__ == '__main__':
     iris = load_iris()
+
+    # pylint: disable=no-member
     X = iris.data
-    y = iris.target 
+    y = iris.target
+    # pylint: enable=no-member
+
     model = LogisticRegression(max_iter=200)
     model.fit(X, y)
 

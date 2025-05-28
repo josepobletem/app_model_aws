@@ -1,6 +1,6 @@
 # Importa tu módulo Lambda (ajusta el nombre si es diferente)
-import lambda_fn.lambda_function as lf
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock  # estándar
+import lambda_fn.lambda_function as lf      # first-party (tu propio módulo)
 
 @patch("lambda_fn.lambda_function.boto3.client")
 def test_lambda_handler_mock_sagemaker(mock_boto_client):
